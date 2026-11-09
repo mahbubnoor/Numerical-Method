@@ -1,0 +1,118 @@
+/* Widgets and live-code runner (used on slides and in labs) */
+.wg{--w-fs:15px;--w-bg:#fbfaf7;--w-plot:#ffffff;--w-ink:#1d2733;--w-mut:#5b6672;--w-line:#d5dbe1;--w-grid:#e7e9ec;--w-chip:#e7edf3;
+  --w-c1:#2f6db5;--w-c2:#b85712;--w-c3:#2e7d4f;--w-c4:#7b3fb8;--w-c5:#c0392b;--w-hi:#fbeee2;--w-font:'IBM Plex Sans',system-ui,sans-serif;
+  background:var(--w-bg);color:var(--w-ink);border:1px solid var(--w-line);border-radius:14px;padding:calc(var(--w-fs)*.9);display:flex;flex-direction:column;gap:calc(var(--w-fs)*.6);
+  font-family:var(--w-font);font-size:var(--w-fs);line-height:1.45;min-width:0}
+.wg *{box-sizing:border-box}
+.wg-row{display:flex;flex-wrap:wrap;gap:calc(var(--w-fs)*.5) calc(var(--w-fs)*1);align-items:center}
+.wg-f,.wg-s{display:inline-flex;align-items:center;gap:calc(var(--w-fs)*.4);font-weight:600;color:var(--w-mut);font-size:calc(var(--w-fs)*.95)}
+.wg-f input,.wg-f select{font:500 var(--w-fs) 'IBM Plex Mono',ui-monospace,monospace;color:var(--w-ink);background:var(--w-plot);border:1px solid var(--w-line);border-radius:8px;padding:calc(var(--w-fs)*.3) calc(var(--w-fs)*.5);min-width:0}
+.wg-f select{font-family:var(--w-font)}
+.wg-f input:focus,.wg-f select:focus{outline:3px solid color-mix(in srgb,var(--w-c1) 45%,transparent);border-color:var(--w-c1)}
+.wg-s input[type=range]{width:calc(var(--w-fs)*11);accent-color:var(--w-c2)}
+.wg-s output{font:600 var(--w-fs) 'IBM Plex Mono',monospace;color:var(--w-ink);min-width:4.5em}
+.wg-b{font:600 calc(var(--w-fs)*.95) var(--w-font);color:var(--w-ink);background:var(--w-chip);border:1px solid var(--w-line);border-radius:9px;padding:calc(var(--w-fs)*.35) calc(var(--w-fs)*.8);cursor:pointer}
+.wg-b:hover{border-color:var(--w-c1)}
+.wg-b.pri{background:var(--w-c2);color:#fff;border-color:var(--w-c2)}
+.wg-b.chip{border-radius:999px;font-family:'IBM Plex Mono',monospace;font-weight:500;padding:calc(var(--w-fs)*.2) calc(var(--w-fs)*.75)}
+.wg-b:focus-visible{outline:3px solid var(--w-c1);outline-offset:2px}
+.wg-chips{gap:calc(var(--w-fs)*.4)}
+.wg-plot{position:relative;width:100%;min-height:140px}
+.wg-cv{display:block;width:100%;height:100%;border-radius:10px;border:1px solid var(--w-line)}
+.wg-side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:calc(var(--w-fs)*.8);align-items:start}
+.wg-side .wg-t{font-size:calc(var(--w-fs)*.92)}
+.wg-side .wg-t td,.wg-side .wg-t th{padding:calc(var(--w-fs)*.25) calc(var(--w-fs)*.35)}
+.wg-side .wg-plot{height:100%!important;min-height:calc(var(--w-fs)*16)}
+.wg-scroll{overflow:auto;max-height:calc(var(--w-fs)*15)}
+.wg-t{border-collapse:collapse;width:100%;font-size:calc(var(--w-fs)*.96);font-variant-numeric:tabular-nums}
+.wg-t th{position:sticky;top:0;background:var(--w-ink);color:var(--w-bg);font-weight:600;padding:calc(var(--w-fs)*.3) calc(var(--w-fs)*.5);text-align:center;white-space:nowrap}
+.wg-t td{padding:calc(var(--w-fs)*.25) calc(var(--w-fs)*.5);border-top:1px solid var(--w-line);text-align:center;font-family:'IBM Plex Mono',monospace;white-space:nowrap}
+.wg-t td:first-child{color:var(--w-mut)}
+.wg-t tr.hi td{background:var(--w-hi)}
+.wg-info .wg-t td{text-align:left;white-space:normal;font-family:var(--w-font)}
+.wg-info .wg-t thead{display:none}
+.wg-info .wg-t td:first-child{font-weight:600;color:var(--w-mut);width:28%}
+.wg-info p{margin:.2em 0}
+.wg .mono{font-family:'IBM Plex Mono',monospace}
+.wg .brk{word-break:break-all}
+.wg-note{margin:0;color:var(--w-mut);font-size:calc(var(--w-fs)*.95)}
+.wg-note b{color:var(--w-ink)}
+.wg-hint{color:var(--w-mut);font-size:calc(var(--w-fs)*.92)}
+.wg-err{background:#fde8e6;color:#8c1d13;border:1px solid #f2b8b1;border-radius:8px;padding:.4em .8em;font-size:calc(var(--w-fs)*.95);white-space:normal}
+.wg .bar{display:inline-block;height:.7em;background:var(--w-c3);border-radius:3px;vertical-align:middle}
+.wg-bits{display:flex;gap:calc(var(--w-fs)*.5);flex-wrap:wrap;align-items:flex-end}
+.wg-bitgrp{display:flex;flex-direction:column;gap:3px}
+.wg-bitlab{font-size:calc(var(--w-fs)*.92);font-weight:600;color:var(--w-mut)}
+.wg-bitcells{display:flex;flex-wrap:wrap;gap:2px;max-width:100%}
+.wg-bitcells span{font:600 calc(var(--w-fs)*.92) 'IBM Plex Mono',monospace;width:1.35em;height:1.7em;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;background:var(--w-plot);border:1px solid var(--w-line);color:var(--w-mut)}
+.wg-bitcells span.one{color:#fff}
+.sgn .one{background:var(--w-c5)!important;border-color:var(--w-c5)!important}
+.exp .one{background:var(--w-c3)!important;border-color:var(--w-c3)!important}
+.man .one{background:var(--w-c1)!important;border-color:var(--w-c1)!important}
+.wg-fpbits .wg-bitcells span{width:1.15em}
+/* ---------- runner ---------- */
+.runner{--r-fs:15px;--r-bg:#0f1b2a;--r-ink:#e6ebf0;--r-mut:#7d8fa3;--r-line:#2a3d55;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;border:1px solid var(--r-line);background:var(--r-bg);color:var(--r-ink);min-height:0;font-family:'IBM Plex Sans',system-ui,sans-serif}
+.rn-bar{display:flex;align-items:center;gap:8px;padding:6px 8px;background:#16263a;border-bottom:1px solid var(--r-line);flex-wrap:wrap}
+.rn-tabs{display:flex;gap:4px}
+.rn-tab{font:600 calc(var(--r-fs)*.9) 'IBM Plex Sans',sans-serif;color:var(--r-mut);background:transparent;border:1px solid transparent;border-radius:8px;padding:4px 12px;cursor:pointer}
+.rn-tab.on{color:#fff;background:#24425f;border-color:#3a6189}
+.rn-title{font-size:calc(var(--r-fs)*.8);color:var(--r-mut);font-family:'IBM Plex Mono',monospace}
+.rn-sp{flex:1}
+.rn-btn,.rn-run{font:600 calc(var(--r-fs)*.9) 'IBM Plex Sans',sans-serif;border-radius:8px;padding:4px 12px;cursor:pointer;border:1px solid #3a6189;background:#1d3550;color:var(--r-ink)}
+.rn-run{background:#2e7d4f;border-color:#3f9a66;color:#fff;padding:4px 18px}
+.rn-run:hover{background:#358f5a}.rn-btn:hover{border-color:#f0a35e}
+.rn-ed{display:flex;position:relative;height:calc(var(--r-fs)*14);min-height:calc(var(--r-fs)*5);font:400 var(--r-fs)/1.5 'IBM Plex Mono',ui-monospace,Consolas,monospace;resize:vertical;overflow:hidden;border-bottom:1px solid var(--r-line)}
+.rn-gut{margin:0;padding:10px 8px 10px 6px;min-width:2.6em;text-align:right;color:#4f6580;background:#0c1622;overflow:hidden;user-select:none;font:inherit;white-space:pre}
+.rn-gut b{color:#fff;background:#b3261e;border-radius:3px;padding:0 3px}
+.rn-inner{position:relative;flex:1;min-width:0}
+.rn-hl,.rn-ta{position:absolute;inset:0;margin:0;padding:10px 12px;font:inherit;white-space:pre;overflow:auto;tab-size:4;border:0}
+.rn-hl{pointer-events:none;color:var(--r-ink)}
+.rn-ta{background:transparent;color:transparent;caret-color:#fff;resize:none;outline:none}
+.rn-ta::selection{background:rgba(120,170,230,.35);color:transparent}
+.rn-hl{scrollbar-width:none}.rn-hl::-webkit-scrollbar{display:none}
+.c-kw{color:#ff9e64}.c-bi{color:#7dcfff}.c-str{color:#9ece6a}.c-num{color:#e0af68}.c-cm{color:#6b7f96;font-style:italic}.c-fn{color:#bb9af7}.c-pp{color:#f7768e}
+.rn-in{display:flex;align-items:center;gap:8px;padding:6px 10px;background:#122233;border-bottom:1px solid var(--r-line)}
+.rn-in label{font:600 calc(var(--r-fs)*.8) 'IBM Plex Sans',sans-serif;color:#f0a35e}
+.rn-inta{flex:1;font:400 calc(var(--r-fs)*.9) 'IBM Plex Mono',monospace;background:#0c1622;color:var(--r-ink);border:1px solid var(--r-line);border-radius:6px;padding:3px 8px;resize:vertical}
+.rn-out{display:flex;flex-direction:column;min-height:calc(var(--r-fs)*4);height:calc(var(--r-fs)*9);flex:1}
+.rn-outhead{display:flex;justify-content:space-between;padding:4px 12px;font:600 calc(var(--r-fs)*.9) 'IBM Plex Sans',sans-serif;color:var(--r-mut);letter-spacing:.05em;text-transform:uppercase;background:#0c1622}
+.rn-meta{text-transform:none;letter-spacing:0;font-family:'IBM Plex Mono',monospace}
+.rn-pre{margin:0;padding:8px 12px;flex:1;overflow:auto;font:400 calc(var(--r-fs)*.95)/1.45 'IBM Plex Mono',monospace;white-space:pre;color:#d7e2ee;background:#0a121c}
+.rn-err{color:#ff8a80;white-space:pre-wrap}
+.rn-warn{color:#ffd479;white-space:pre-wrap}
+.rn-dim{color:var(--r-mut);font-style:italic}
+
+/* ---------- Module 3: matrices ---------- */
+.wg-top{align-items:flex-start;gap:calc(var(--w-fs)*.8)}
+.wg-col{display:flex;flex-direction:column;gap:calc(var(--w-fs)*.5);flex:1;min-width:0}
+.wg-inbox{display:flex;flex-direction:column;gap:4px}
+.wg-ta{font:500 var(--w-fs)/1.4 'IBM Plex Mono',ui-monospace,monospace;color:var(--w-ink);background:var(--w-plot);border:1px solid var(--w-line);border-radius:8px;padding:calc(var(--w-fs)*.35) calc(var(--w-fs)*.5);width:calc(var(--w-fs)*15);resize:vertical}
+.wg-ta:focus{outline:3px solid color-mix(in srgb,var(--w-c1) 45%,transparent);border-color:var(--w-c1)}
+.wg-op{font-size:calc(var(--w-fs)*1.02);font-weight:500;background:var(--w-hi);border-left:4px solid var(--w-c2);border-radius:6px;padding:calc(var(--w-fs)*.35) calc(var(--w-fs)*.7);min-height:2.1em}
+.wg-op .bad,.wg .bad{color:var(--w-c5);font-weight:600}
+.wg-matview{display:flex;flex-wrap:wrap;gap:calc(var(--w-fs)*1);align-items:flex-start;overflow-x:auto}
+.wg-mats{display:flex;flex-wrap:wrap;gap:calc(var(--w-fs)*1.1);align-items:flex-start}
+.wg-matbox{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.wg-matlab{font-size:calc(var(--w-fs)*.95);font-weight:600;color:var(--w-mut)}
+.wg-mat{border-collapse:separate;border-spacing:0;font:500 calc(var(--w-fs)*1.02) 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;border-left:3px solid var(--w-ink);border-right:3px solid var(--w-ink);border-radius:7px;padding:2px 4px}
+.wg-mat td{padding:calc(var(--w-fs)*.2) calc(var(--w-fs)*.55);text-align:right;min-width:3.2em;white-space:nowrap;border-radius:5px}
+.wg-mat td.sep{border-left:2px dashed var(--w-mut)}
+.wg-mat td.z{color:color-mix(in srgb,var(--w-mut) 55%,transparent)}
+.wg-mat td.emp{color:var(--w-mut);text-align:center}
+.wg-mat tr.chg td{background:var(--w-hi)}
+.wg-mat td.piv{outline:2.5px solid var(--w-c2);outline-offset:-2px;font-weight:700}
+.wg-mat td.new{background:color-mix(in srgb,var(--w-c3) 22%,transparent);font-weight:700}
+.wg-mat td.colhi{background:color-mix(in srgb,var(--w-c1) 16%,transparent)}
+.wg-heatrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:calc(var(--w-fs)*.8);align-items:center}
+.wg-heatbox{display:flex;flex-direction:column;align-items:center;gap:4px}
+.wg-heat{width:calc(var(--w-fs)*12);height:calc(var(--w-fs)*12);border-radius:8px;border:1px solid var(--w-line);image-rendering:pixelated}
+
+/* ---------- Module 4: difference tables ---------- */
+.wg-dtab td{padding:calc(var(--w-fs)*.12) calc(var(--w-fs)*.55)}
+.wg-dtab td.xv{color:var(--w-mut);font-weight:600}
+.wg-dtab td.dg{background:color-mix(in srgb,var(--w-c2) 20%,transparent);font-weight:700;border-radius:6px}
+.wg-dtab td.err{color:var(--w-c5);font-weight:700}
+.wg-dtab td:empty{border-top:0}
+.wg-dtab tr td{border-top:0}
+.wg-interp .wg-side{grid-template-columns:minmax(0,.8fr) minmax(0,1.45fr)}
+.wg-two{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--w-fs)*.8)}
