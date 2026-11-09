@@ -13,22 +13,6 @@ code, and a lab page with a solver for your own problems, coding tasks and pract
 
 Everything is static and self-contained (fonts, KaTeX and the in-browser Python/C interpreters are in
 `assets/`), so the same folder also works offline: download it and open `index.html`.
-
-## Publishing this folder with GitHub Pages
-
-1. **Create a repository** on GitHub, e.g. `Numerical-Methods` (Public; GitHub Pages on a free
-   account needs a public repository). Do not add a README, licence or .gitignore there; this folder
-   already has them.
-2. **Upload the files.** The repository root must contain `index.html` (not a sub-folder).
-   - *Command line* (recommended; run inside this folder):
-     ```
-     git init
-     git add .
-     git commit -m "Course site"
-     git branch -M main
-     git remote add origin https://github.com/<your-github-username>/<repository-name>.git
-     git push -u origin main
-     ```
    - *Web browser:* on the empty repository page click **uploading an existing file**, then drag
      **the contents** of this folder (not the folder itself) into the page and commit. The web
      uploader takes at most 100 files per commit: this folder has about 190 files, so upload it in
