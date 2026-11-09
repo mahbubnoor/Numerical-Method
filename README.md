@@ -13,19 +13,6 @@ code, and a lab page with a solver for your own problems, coding tasks and pract
 
 Everything is static and self-contained (fonts, KaTeX and the in-browser Python/C interpreters are in
 `assets/`), so the same folder also works offline: download it and open `index.html`.
-   - *Web browser:* on the empty repository page click **uploading an existing file**, then drag
-     **the contents** of this folder (not the folder itself) into the page and commit. The web
-     uploader takes at most 100 files per commit: this folder has about 190 files, so upload it in
-     two or three commits (for example `assets/` alone, then `_source/` and `notes/`, then the rest). Your computer may hide the file `.nojekyll`; if it was not uploaded, use
-     **Add file → Create new file**, name it `.nojekyll`, leave it empty and commit.
-3. **Turn on Pages:** repository **Settings → Pages → Build and deployment → Source: Deploy from a
-   branch**, Branch **main**, folder **/ (root)**, **Save**.
-4. Wait one or two minutes. The address appears at the top of the Pages settings
-   (`https://<your-github-username>.github.io/<repository-name>/`). Put it in the line at the top of
-   this README.
-
-To update the site later, replace the changed files and commit again; Pages redeploys automatically.
-
 ## Contents
 
 | Path | Contents |
