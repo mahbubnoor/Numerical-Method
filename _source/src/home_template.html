@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Numerical Methods Course</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<script src="assets/theme.js"></script>
+<style>
+:root{--bg:#f3f1ec;--panel:#fbfaf7;--ink:#1d2733;--muted:#5b6672;--line:#d8dde2;--navy:#16324f;--blue:#2f6db5;--orange:#a64f15;--green:#2e7d4f;--chip:#e7edf3;
+--sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#10171f;--panel:#17212c;--ink:#e6ebf0;--muted:#a3afbb;--line:#2c3a48;--navy:#9fc1e6;--blue:#8fb8ea;--orange:#f0a35e;--green:#6cc492;--chip:#1f2c3a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10171f;--panel:#17212c;--ink:#e6ebf0;--muted:#a3afbb;--line:#2c3a48;--navy:#9fc1e6;--blue:#8fb8ea;--orange:#f0a35e;--green:#6cc492;--chip:#1f2c3a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:6px;border-bottom:3px solid var(--navy);padding-bottom:18px;position:relative;padding-right:120px}
+.eyebrow{font:600 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin:0}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;color:var(--navy);text-wrap:balance}
+.meta{margin:0;color:var(--muted)}
+#theme{position:absolute;right:0;top:-4px;font:600 13px var(--sans);background:var(--chip);color:var(--ink);border:1px solid var(--line);border-radius:999px;height:32px;min-width:40px;padding:0 12px;cursor:pointer}
+#theme:hover{border-color:var(--navy)} #theme:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.how{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 24px}
+.how h2{grid-column:1/-1;margin:0;font-size:18px;color:var(--navy)}
+.how p{margin:0;font-size:14px;color:var(--muted)} .how b{color:var(--ink)}
+kbd{font:600 12px var(--mono);background:var(--chip);border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--ink)}
+section.part{display:flex;flex-direction:column;gap:10px}
+section.part h2{font-size:20px;margin:0;color:var(--navy);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+section.part h2 span{font:500 13px var(--mono);color:var(--muted)}
+ol.lec{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+li.l{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:6px 16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+li.l.soon{opacity:.62}
+.num{font:600 22px var(--mono);font-variant-numeric:tabular-nums}
+.part-blue .num{color:var(--blue)} .part-orange .num{color:var(--orange)} .part-navy .num{color:var(--navy)} .part-green .num{color:var(--green)}
+.t{min-width:0} .t b{display:block;font-size:17px} .t small{display:block;color:var(--muted);font-size:14px}
+.files{display:block;font:500 12px var(--mono);color:var(--muted);margin-top:4px;overflow-wrap:anywhere}
+.acts{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.acts a,.acts span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--chip);white-space:nowrap}
+.acts a:hover{border-color:var(--navy)} .acts a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.acts span{opacity:.55}
+.acts a.pri{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+footer{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+footer a{color:var(--blue)}
+@media (max-width:640px){li.l{grid-template-columns:40px minmax(0,1fr)} .acts{grid-column:1/-1;justify-content:flex-start}}
+</style></head><body><div class="wrap">
+<header><button id="theme" type="button" data-theme-toggle aria-label="Switch light or dark theme">☾ Dark</button>
+<p class="eyebrow">Course home · {{NTOTAL}} lectures · {{NREADY}} ready</p><h1>Numerical Methods</h1>
+<p class="meta">CSE-3107 · Md Mahbub E Noor · Assistant Professor, Department of CSE, University of Barishal · 3rd Year, 1st Semester</p></header>
+<section class="how" aria-label="How to use"><h2>How to use</h2>
+<p><b>Slides:</b> <kbd>→</kbd>/<kbd>Space</kbd> next step, <kbd>←</kbd> back, <kbd>F</kbd> full screen, <kbd>S</kbd> slide list. Worked solutions appear one line at a time: predict the next line before it appears.</p>
+<p><b>Live code:</b> every lecture has Python and C programs you can edit and run in the page (<kbd>Ctrl</kbd>+<kbd>Enter</kbd>). Change a number, press Run, see what happens. <b>⤓</b> downloads the file for Jupyter or gcc.</p>
+<p><b>Labs:</b> each lecture's lab has an explorer, a solver that builds the full iteration table for <i>your own</i> problem, coding tasks, and practice questions with answers.</p>
+<p><b>Offline:</b> everything is inside this folder: fonts, formulas, Python and C runners. Open <kbd>index.html</kbd> in any browser, no internet needed.</p></section>
+{{PARTS}}
+<footer>Interactive code runs in small built-in interpreters (MiniPy, MiniC); every program was checked against real Python 3 and gcc.
+· © 2026 Md Mahbub E Noor. Course content <a href="LICENSE.md">CC BY-NC-SA 4.0</a>, code <a href="LICENSE-CODE.txt">MIT</a>; <a href="THIRD-PARTY-NOTICES.md">third-party notices</a> (IBM Plex fonts, KaTeX).</footer>
+</div></body></html>
