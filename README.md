@@ -4,7 +4,8 @@ Interactive course materials for **CSE-3107 Numerical Methods**, B.Sc. 3rd Year 
 Department of CSE, University of Barishal. Md Mahbub E Noor.
 
 **Live site:** [Here](https://mahbubnoor.github.io/Numerical-Method/)
-25 lectures in 7 modules: floating point and errors, roots of equations, linear systems,
+
+25 lectures in 7 modules: floating-point and errors, roots of equations, linear systems,
 interpolation, numerical differentiation and integration, ODEs, and data fitting and optimisation
 for machine learning. Every lecture has an HTML slide deck with live widgets and runnable Python and C
 code, and a lab page with a solver for your own problems, coding tasks and practice questions.
