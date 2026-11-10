@@ -54,11 +54,41 @@
       if (w > 0 && sw > w + 2) el.style.fontSize = Math.max(0.55, (w / sw) * 0.98).toFixed(3) + 'em';
     });
   }
+
+  /* ---- animated concept figures: steps appear one by one, loop; click = pause / resume */
+  var figTimer = null;
+  function figSet(f, k) {
+    f._k = k;
+    f.querySelectorAll('[data-s]').forEach(function (e) { var a = +e.getAttribute('data-s'), u = e.getAttribute('data-u'); e.classList.toggle('on', a <= k && (!u || k < +u)); });
+    f.querySelectorAll('.afig-cap span').forEach(function (e) { e.classList.toggle('on', +e.getAttribute('data-c') === k); });
+    var kk = f.querySelector('.afig-k'); if (kk) kk.textContent = k + ' / ' + f.getAttribute('data-n');
+  }
+  function figTick(f) {
+    clearTimeout(figTimer);
+    if (f._paused) return;
+    var n = +f.getAttribute('data-n');
+    figTimer = setTimeout(function () { figSet(f, f._k >= n ? 0 : f._k + 1); figTick(f); }, f._k >= n ? 5500 : (f._k === 0 ? 2200 : 2600));
+  }
+  function figStart(slide) {
+    clearTimeout(figTimer);
+    var f = slide.querySelector('.afig'); if (!f) return;
+    if (!f._init) {
+      f._init = true;
+      f.addEventListener('click', function (e) {
+        e.stopPropagation();
+        f._paused = !f._paused; f.querySelector('.afig-btn').textContent = f._paused ? '▶' : '❚❚';
+        if (!f._paused) { figSet(f, f._k >= +f.getAttribute('data-n') ? 0 : f._k + 1); figTick(f); }
+      });
+    }
+    f.classList.add('run'); f._paused = false; f.querySelector('.afig-btn').textContent = '❚❚';
+    figSet(f, 0); figTick(f);
+  }
   function show(i, fromHash, allFrags) {
     i = Math.max(0, Math.min(total - 1, i));
     slides.forEach(function (s, k) { s.classList.toggle('off', k !== i); });
     cur = i;
     mount(slides[i]);
+    figStart(slides[i]);
     fitMath(slides[i]);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (cur === i) fitMath(slides[i]); });
     if (allFrags) setFrags(slides[i], frags(slides[i]).length);
