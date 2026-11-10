@@ -69,11 +69,11 @@ LECTURE = dict(
              notes="Reveal one row at a time; ask the class to predict the next central error before it appears (divide by 4).\n\nf'''(x) = 2/x³ for ln x, so f'''(1) = 2 and the predicted central error at h = 0.1 is 0.01 × 2/6 = 0.00333. Measured: 0.00335. The O(h²) theory matches.\n\nRun the code box to reproduce the table, then change the function."),
         dict(type='exam', id='practice', src='Problem 4',
              q='"Starting from the Taylor series expansion of $f(x)$ about a point $x$, derive the central-difference approximation of $f\'(x)$ and show that its truncation error is $O(h^2)$. Using this formula with $h = 0.1$, estimate $f\'(1)$ for $f(x) = \\ln x$. Compare your result with the exact derivative and compute the actual error, commenting on whether it is consistent with the theoretical $O(h^2)$ order."',
-             tips=['Derivation exactly as on slide 9: expand $f(x\\pm h)$, subtract, divide by $2h$, name the leading error term $-\\tfrac{h^2}{6}f\'\'\'(x)$',
+             tips=['Derivation as shown earlier: expand $f(x\\pm h)$, subtract, divide by $2h$, name the leading error term $-\\tfrac{h^2}{6}f\'\'\'(x)$',
                    'Numbers: $\\dfrac{\\ln 1.1 - \\ln 0.9}{0.2} = \\dfrac{0.0953102 + 0.1053605}{0.2} = 1.0033535$',
                    'Exact $f\'(1) = 1$; actual error $= 0.0033535$',
                    'Theory: $\\tfrac{h^2}{6}|f\'\'\'(1)| = \\tfrac{0.01}{6}\\times 2 = 0.0033333$: matches, so consistent with $O(h^2)$',
-                   'Strong answers add: halving $h$ to 0.05 gives error $8.35\\times10^{-4}$, a factor 4 smaller'],
+                   'Add: halving $h$ to 0.05 gives error $8.35\\times10^{-4}$, a factor 4 smaller'],
              notes=""),
         dict(type='ml', id='ml', items=[
             dict(ic='⬇️', h='Gradient descent is first-order Taylor', t='$L(w + \\Delta) \\approx L(w) + \\nabla L^{T}\\Delta$. The decrease is largest for $\\Delta = -\\eta\\nabla L$: that is the update rule (Lecture 25).'),
@@ -181,7 +181,7 @@ print("error      :", abs(math.e - total))
                  dict(name='Code', blocks=[
                      dict(h='Order of a difference formula'), dict(code='order', tasks=['Run it. Do the central-difference ratios approach 4?', 'Change f to math.exp and exact to math.exp(1.0). Same ratios?', 'Add h = 1e-6 and 1e-9 to the list. What happens to the central error, and why?']),
                      dict(h='Sine series with error bound'), dict(code='taylor_sin', tasks=['Run it. Is the error always below the bound?', 'Change x to 3. How many terms until the error is below 1e-6?']),
-                     dict(h='How many terms for e?'), dict(code='expterms', tasks=['Run it. Compare with the 10 terms predicted on slide 7.', 'Change the tolerance to 1e-12. How many terms?'])]),
+                     dict(h='How many terms for e?'), dict(code='expterms', tasks=['Run it. Compare with the 10 terms predicted on the slide "How many terms do we need?".', 'Change the tolerance to 1e-12. How many terms?'])]),
                  dict(name='Practice', blocks=[
                      dict(qa=[
                          ('Write the Taylor series of $\\ln x$ about $x = 1$ up to the $(x-1)^3$ term.', '$\\ln x = (x-1) - \\tfrac{(x-1)^2}{2} + \\tfrac{(x-1)^3}{3} - \\cdots$'),

@@ -13,7 +13,7 @@ LECTURE = dict(
              frag=True,
              right=dict(stack=[dict(eq='\\begin{aligned} 7I_1 - 2I_2 \\phantom{{}-3I_3} &= 12 \\\\ -2I_1 + 9I_2 - 3I_3 &= 2 \\\\ -3I_2 + 6I_3 &= 3 \\end{aligned}', cap='Loop equations (volts)'),
                                dict(card=dict(cls='blue', tag='The question', t='Find $I_1, I_2, I_3$. Then ask: how would the same method cope with 25 loops, or 25 000?'))]),
-             notes="The coefficients come from the resistances: loop 1 has 7 Ω in total and shares 2 Ω with loop 2; loop 2 has 9 Ω and shares 3 Ω with loop 3; loop 3 has 6 Ω. Sources: 12 V, 2 V, 3 V.\n\nDo not solve it yet: ask students to guess which method they would use. Solved on slide 7 (Cramer) and slide 10 (inverse): I = (2, 1, 1) A."),
+             notes="The coefficients come from the resistances: loop 1 has 7 Ω in total and shares 2 Ω with loop 2; loop 2 has 9 Ω and shares 3 Ω with loop 3; loop 3 has 6 Ω. Sources: 12 V, 2 V, 3 V.\n\nDo not solve it yet: ask students to guess which method they would use. Solved in Problem 1 (Cramer) and again later (inverse): I = (2, 1, 1) A."),
         dict(type='goals', id='goals', items=[
             'Write a system of linear equations as $A\\mathbf{x} = \\mathbf{b}$ and recognise the three possible outcomes',
             'Solve a system by <b>Cramer\'s rule</b> and by the <b>inverse</b> (adjugate) method',

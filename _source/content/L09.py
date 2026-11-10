@@ -9,7 +9,7 @@ LECTURE = dict(
              items=['We want $x = 1/7$: the root of $f(x) = \\dfrac{1}{x} - 7$', 'Some rule $x_{n+1} = (\\text{something})$ that improves a guess using only $\\times$ and $-$', 'Bisection would need 20 steps for 6 digits; fixed-point iteration needs the right $g$', 'Today\'s method gives the rule $x_{n+1} = x_n(2 - 7x_n)$, and the digits <b>double</b> every step'],
              frag=True,
              right=dict(table=[['$n$', '$x_n$', 'correct digits'], [['0', '0.1', '0'], ['1', '0.13', '1'], ['2', '0.1417', '2'], ['3', '0.14284777', '5'], ['4', '0.14285714', '10+']]]),
-             notes="Present the problem; hide the table at first (it is not a fragment, so cover it or just point later). Students will not see how to get the rule; the derivation is on slide 11 (Newton applied to f(x) = 1/x − N gives x(2 − Nx)). The summary returns to it.\n\nTrue value 1/7 = 0.142857142857..."),
+             notes="Present the problem; hide the table at first (it is not a fragment, so cover it or just point later). Students will not see how to get the rule; the derivation is on the slide \"Newton inside your computer\" (Newton applied to f(x) = 1/x − N gives x(2 − Nx)). The summary returns to it.\n\nTrue value 1/7 = 0.142857142857..."),
         dict(type='goals', id='goals', items=[
             'Derive the Newton–Raphson formula geometrically and from Taylor series',
             'Carry out Newton\'s method by hand to a required accuracy (iteration tables)',

@@ -61,7 +61,7 @@ LECTURE = dict(
              rows=[[1, '1', '2', '−4', '3', '1.571429', '−1.364431'], [2, '1.571429', '2', '−1.364431', '3', '1.705411', '−0.247745'], [3, '1.705411', '2', '−0.247745', '3', '1.727883', '−0.039340'],
                    [4, '1.727883', '2', '−0.039340', '3', '1.731405', '−0.006111'], [5, '1.731405', '2', '−0.006111', '3', '1.731951', '−0.000946']],
              note='Bonus check: $x^3 + x^2 - 3x - 3 = (x + 1)(x^2 - 3)$, so the exact root is $\\sqrt{3} = 1.7320508$. After 5 steps: 1.7320 (4 correct decimals).',
-             notes="'Establish the method' means derive the formula (slide 4) before computing. Spend one line on the chord, one on the formula."),
+             notes="'Establish the method' means derive the formula (the slide \"The idea: follow the chord\") before computing. Spend one line on the chord, one on the formula."),
         dict(type='compare', id='classic', title='Same problem, two approaches: $x^3 + x^2 - 3x - 3 = 0$', kick='Classical vs numerical', mid='vs',
              left=dict(h='Classical (exact formula)', tag='Algebra', cls='blue', items=['Spot the factor: $x^2(x+1) - 3(x+1) = (x+1)(x^2 - 3)$', 'Roots $-1$ and $\\pm\\sqrt3$; in $[1, 2]$: $x = \\sqrt3$', 'Works only because a factorisation happens to exist']),
              right=dict(h='Numerical (false position)', tag='Algorithm', cls='key', items=['Bracket $[1, 2]$: $f(1) = -4$, $f(2) = 3$', '9 iterations for $10^{-6}$: $x \\approx 1.732051$', 'Matches $\\sqrt3 = 1.7320508$, and needed no clever factoring']),

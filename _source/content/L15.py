@@ -10,7 +10,7 @@ LECTURE = dict(
                     'All three questions are answered by one tool: <b>repeated subtraction</b> of neighbouring values'],
              frag=True,
              right=dict(table=[['$t$ (s)', '0', '1', '2', '3', '4', '5', '6'], [['$y$', '1', '0', '5', '22', '57', '116', '205']]]),
-             notes="The data are y = t³ − 2t + 1, but do not say so. Students should discover the degree from the table (slide 6) and the leading coefficient from the constant third difference.\n\nSolved at the end: cubic with leading coefficient 1; y(2.5) = 11.625; changing 22 to 23 is detected by the pattern 1, −3, 3, −1 in the third differences."),
+             notes="The data are y = t³ − 2t + 1, but do not say so. Students should discover the degree from the table (Problem 1) and the leading coefficient from the constant third difference.\n\nSolved at the end: cubic with leading coefficient 1; y(2.5) = 11.625; changing 22 to 23 is detected by the pattern 1, −3, 3, −1 in the third differences."),
         dict(type='goals', id='goals', items=[
             'Build a <b>forward difference table</b> and read the forward and backward diagonals',
             'Use the fact that the $n$-th differences of a degree-$n$ polynomial are constant',

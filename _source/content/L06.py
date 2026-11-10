@@ -18,7 +18,7 @@ LECTURE = dict(
             'Use the <b>intermediate value theorem</b> to locate a bracket $[a, b]$',
             'Perform bisection <b>by hand</b> and present it as a clear iteration table',
             'Compute the <b>error bound</b> and the <b>number of iterations</b> needed',
-            'Write bisection in <b>Python and C</b> (asked in past finals)',
+            'Write bisection in <b>Python and C</b>',
             'Explain its <b>limitations</b> and which later methods remove them'],
             prev='Conditioning and stability: accuracy needs a well-posed problem and a careful algorithm.',
             today='The first of five root-finding methods. Bisection is the safest, the slowest, and the benchmark for all the others.',

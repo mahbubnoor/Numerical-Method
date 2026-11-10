@@ -16,6 +16,8 @@ CODE_NO = 'CSE-3107'
 
 sys.path.insert(0, os.path.join(ROOT, 'content'))
 from roadmap import ROADMAP, MODULES  # noqa: E402
+from figs import FIGS  # noqa: E402
+from pictures import PICT  # noqa: E402
 
 # ------------------------------------------------------------------ math (KaTeX, rendered at build time)
 MATH = []
@@ -327,7 +329,13 @@ def s_profile(L, s):
     if s.get('verdict'): body += '<p class="verdict frag fade">%s</p>' % M(s['verdict'])
     return head({'title': s.get('title', 'Method profile'), 'kick': s.get('kick', 'When to use it'), 'lead': s.get('lead')}) + body, ''
 
-RENDER = {'cover': s_cover, 'section': s_section, 'goals': s_goals, 'bullets': s_bullets, 'cards': s_cards, 'compare': s_compare, 'math': s_math,
+def s_picture(L, s):
+    fig = FIGS[L['n']]().svg()
+    side = '<div class="card key"><span class="tag">In plain words</span>%s</div>' % ul(s['plain'], cls='')
+    side += '<div class="card"><span class="tag">New words today</span><dl class="words">%s</dl></div>' % ''.join('<dt>%s</dt><dd>%s</dd>' % (M(a), M(b)) for a, b in s['words'])
+    return head({'title': s.get('title', 'The idea in one picture'), 'kick': s.get('kick', 'Start here')}) + '<div class="cols pic"><div class="col fix" style="width:1000px">%s</div><div class="col">%s</div></div>' % (fig, side), ''
+
+RENDER = {'picture': s_picture, 'cover': s_cover, 'section': s_section, 'goals': s_goals, 'bullets': s_bullets, 'cards': s_cards, 'compare': s_compare, 'math': s_math,
           'worked': s_worked, 'table': s_table, 'code': s_code, 'widget': s_widget, 'check': s_check, 'exam': s_exam, 'ml': s_ml, 'summary': s_summary, 'html': s_html, 'bridge': s_bridge, 'apps': s_apps, 'profile': s_profile}
 
 # ------------------------------------------------------------------ pages
@@ -336,7 +344,11 @@ def load(n):
     if not os.path.exists(p): return None
     spec = importlib.util.spec_from_file_location('L%02d' % n, p)
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
-    return m.LECTURE
+    L = m.LECTURE
+    if n in PICT and not any(x['type'] == 'picture' for x in L['slides']):
+        at = next(i for i, x in enumerate(L['slides']) if x['type'] == 'goals') + 1
+        L['slides'].insert(at, dict(type='picture', id='picture', notes='The animation plays by itself and loops; click it (or the ❚❚ button) to pause on a step. Read the caption under the figure aloud at each step, then go through "In plain words" before any formula appears.', **PICT[n]))
+    return L
 
 def plain(s):
     s = re.sub(r'\$+([^$]*)\$+', lambda m: m.group(1).replace('\\', ''), s or '')
@@ -386,7 +398,7 @@ def build_deck(L):
         if s['type'] != 'cover':
             body += ('<div class="foot"><div class="f1">%s</div><div class="f2">Lecture %d: %s</div><div class="f3">%s</div><div class="f4">%d / %d</div></div>'
                      % (AUTHOR, L['n'], esc(plain(L['short'] if L.get('short') else L['title'])), UNI, i + 1, n_slides))
-        title = plain(s.get('title') or {'cover': 'Title', 'exam': 'Practice problem', 'check': 'Checkpoint', 'summary': 'Summary', 'goals': 'Objectives', 'apps': 'Applications', 'bridge': 'Roadmap', 'ml': 'Beyond the classroom'}.get(s['type'], s['type'].capitalize()))
+        title = plain(s.get('title') or {'cover': 'Title', 'exam': 'Practice problem', 'check': 'Checkpoint', 'summary': 'Summary', 'goals': 'Objectives', 'apps': 'Applications', 'bridge': 'Roadmap', 'ml': 'Beyond the classroom', 'picture': 'The idea in one picture'}.get(s['type'], s['type'].capitalize()))
         secs.append('<section id="%s" class="s %s" data-title="%s">%s</section>' % (sid, cls, esc(title), body))
         if s.get('notes'): notes[sid] = s['notes']
     return '\n'.join(secs), notes

@@ -267,7 +267,7 @@ for name, (r, n) in [("bisection", bisection(1, 2)), ("false position", false_po
                      dict(p='Blue and green curves are f₁ = 0 and f₂ = 0; their crossings are the solutions. Change the starting point to reach a different solution.'),
                      dict(w='newton2d', o=dict(f1='x^2 + y^2 - 4', f2='x y - 1', x0=2, y0=0.5, height='380px', side=True, range=[-3, 3, -3, 3]))]),
                  dict(name='Code', blocks=[
-                     dict(h='Secant'), dict(code='secant', tasks=['Run it. Compare with the table on slide 7.', 'Start from x0 = 0, x1 = 0.5 (same side of the root). Does it still converge?', 'Count function evaluations and compare with Newton.']),
+                     dict(h='Secant'), dict(code='secant', tasks=['Run it. Compare with the table of Problem 1.', 'Start from x0 = 0, x1 = 0.5 (same side of the root). Does it still converge?', 'Count function evaluations and compare with Newton.']),
                      dict(h='All methods'), dict(code='allmethods', tasks=['Run it. Which method needs the fewest iterations? The fewest function evaluations?', 'Change f to e^x − 3x (and df) with bracket [0, 1] and Newton start 0.5.']),
                      dict(h='Newton for systems'), dict(code='newtonsys', tasks=['Run it. How many steps to 1e-10?', 'Start from (0.5, 2). Which solution do you get?', 'Change to x² + y = 11, x + y² = 7 from (3.5, 1.5).'])]),
                  dict(name='Practice', blocks=[
