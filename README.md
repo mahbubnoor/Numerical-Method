@@ -3,8 +3,7 @@
 Interactive course materials for **CSE-3107 Numerical Methods**, B.Sc. 3rd Year 1st Semester,
 Department of CSE, University of Barishal. Md Mahbub E Noor.
 
-**Live site:** `https://<your-github-username>.github.io/<repository-name>/`
-(replace the two placeholders after publishing; see below)
+**Live site:** [Here](https://mahbubnoor.github.io/Numerical-Method/)
 
 25 lectures in 7 modules: floating point and errors, roots of equations, linear systems,
 interpolation, numerical differentiation and integration, ODEs, and data fitting and optimisation
@@ -13,34 +12,6 @@ code, and a lab page with a solver for your own problems, coding tasks and pract
 
 Everything is static and self-contained (fonts, KaTeX and the in-browser Python/C interpreters are in
 `assets/`), so the same folder also works offline: download it and open `index.html`.
-
-## Publishing this folder with GitHub Pages
-
-1. **Create a repository** on GitHub, e.g. `Numerical-Methods` (Public; GitHub Pages on a free
-   account needs a public repository). Do not add a README, licence or .gitignore there; this folder
-   already has them.
-2. **Upload the files.** The repository root must contain `index.html` (not a sub-folder).
-   - *Command line* (recommended; run inside this folder):
-     ```
-     git init
-     git add .
-     git commit -m "Course site"
-     git branch -M main
-     git remote add origin https://github.com/<your-github-username>/<repository-name>.git
-     git push -u origin main
-     ```
-   - *Web browser:* on the empty repository page click **uploading an existing file**, then drag
-     **the contents** of this folder (not the folder itself) into the page and commit. The web
-     uploader takes at most 100 files per commit: this folder has about 190 files, so upload it in
-     two or three commits (for example `assets/` alone, then `_source/` and `notes/`, then the rest). Your computer may hide the file `.nojekyll`; if it was not uploaded, use
-     **Add file → Create new file**, name it `.nojekyll`, leave it empty and commit.
-3. **Turn on Pages:** repository **Settings → Pages → Build and deployment → Source: Deploy from a
-   branch**, Branch **main**, folder **/ (root)**, **Save**.
-4. Wait one or two minutes. The address appears at the top of the Pages settings
-   (`https://<your-github-username>.github.io/<repository-name>/`). Put it in the line at the top of
-   this README.
-
-To update the site later, replace the changed files and commit again; Pages redeploys automatically.
 
 ## Contents
 
