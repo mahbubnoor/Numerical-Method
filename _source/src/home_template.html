@@ -17,7 +17,9 @@ h1{font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;color:var(--navy);tex
 .meta{margin:0;color:var(--muted)}
 #theme{position:absolute;right:0;top:-4px;font:600 13px var(--sans);background:var(--chip);color:var(--ink);border:1px solid var(--line);border-radius:999px;height:32px;min-width:40px;padding:0 12px;cursor:pointer}
 #theme:hover{border-color:var(--navy)} #theme:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-.how{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 24px}
+.how{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 24px}
+@media (max-width:1000px){.how{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.how{grid-template-columns:1fr}}
 .how h2{grid-column:1/-1;margin:0;font-size:18px;color:var(--navy)}
 .how p{margin:0;font-size:14px;color:var(--muted)} .how b{color:var(--ink)}
 kbd{font:600 12px var(--mono);background:var(--chip);border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--ink)}
